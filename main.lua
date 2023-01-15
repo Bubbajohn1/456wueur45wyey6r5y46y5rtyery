@@ -1,8 +1,3 @@
---[[ Credits
-    Matas#3535 @matas - Created UI
-    bored#9316 @wally hub user - Helped make library
-]]
--- // Variables
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
 local rs = game:GetService("RunService")
@@ -19,9 +14,10 @@ local library = {
     ended = {},
     changed = {},
     folders = {
-        main = "splix",
-        assets = "splix/assets",
-        configs = "splix/configs"
+        main = "qupx",
+        assets = "qupx/assets",
+        configs = "qupx/configs",
+        luas = "qupx/scripts"
     },
     shared = {
         initialized = false,

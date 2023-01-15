@@ -1,3 +1,4 @@
+--edited version of matas' slpix lib
 local ws = game:GetService("Workspace")
 local uis = game:GetService("UserInputService")
 local rs = game:GetService("RunService")

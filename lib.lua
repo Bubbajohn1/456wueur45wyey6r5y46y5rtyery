@@ -1,15 +1,7 @@
 local UserInputService = game:GetService("UserInputService")
 --[[
-
-    Library Made for https://octohook.xyz/
     Developed by liam#4567
-    Modified by tatar0071#0627
-
-    Ik this code is really shit in some places lol
-    will rewrite again i was just using some rly old stuff that i was lazy to rewrite
-    could've been a lot better and more optimized in some places and some things arent done as they should've been
-    got lazy when trying to make disable all roblox input when ui is open sooo that will be added later =)
-
+    Modified by huebert-69#1599
 ]]
 
 -- // Load
@@ -79,7 +71,7 @@ local library = {
     open = false;
     opening = false;
     hasInit = false;
-    cheatname = startupArgs.cheatname or 'qupx';
+    cheatname = startupArgs.cheatname or 'octohook';
     gamename = startupArgs.gamename or 'universal';
     fileext = startupArgs.fileext or '.txt';
 }
@@ -251,6 +243,32 @@ library.themes = {
             ['Border 2']                  = fromrgb(31,31,35);
             ['Border 3']                  = fromrgb(10,10,10);
             ['Primary Text']              = fromrgb(235,235,235);
+            ['Group Background']          = fromrgb(31,31,35);
+            ['Selected Tab Background']   = fromrgb(31,31,35);
+            ['Unselected Tab Background'] = fromrgb(17,17,17);
+            ['Selected Tab Text']         = fromrgb(225,225,225);
+            ['Unselected Tab Text']       = fromrgb(160,170,175);
+            ['Section Background']        = fromrgb(17,17,17);
+            ['Option Text 1']             = fromrgb(245,245,245);
+            ['Option Text 2']             = fromrgb(195,195,195);
+            ['Option Text 3']             = fromrgb(145,145,145);
+            ['Option Border 1']           = fromrgb(45,45,45);
+            ['Option Border 2']           = fromrgb(0,0,0);
+            ['Option Background']         = fromrgb(24,24,27);
+            ["Risky Text"]                = fromrgb(175, 21, 21);
+            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
+        }
+    },
+    {
+        name = "Dracula",
+        theme = {
+            ['Accent']                    = fromrgb(189, 147, 249);
+            ['Background']                = fromrgb(40, 42, 54);
+            ['Border']                    = fromrgb(0,0,0);
+            ['Border 1']                  = fromrgb(45,45,45);
+            ['Border 2']                  = fromrgb(31,31,35);
+            ['Border 3']                  = fromrgb(10,10,10);
+            ['Primary Text']              = fromrgb(248, 248, 242);
             ['Group Background']          = fromrgb(31,31,35);
             ['Selected Tab Background']   = fromrgb(31,31,35);
             ['Unselected Tab Background'] = fromrgb(17,17,17);
@@ -4875,5 +4893,117 @@ function library:CreateSettingsTab(menu)
 end
 
 getgenv().library = library
+---// Load Library
+local startTick = tick()
+
+library:init()
+
+local menu = library.NewWindow({title = "wwwwww bob", size = UDim2.new(0, 500, 0.7, 20.7)})
+
+---Tabs
+local HomeTab = menu:AddTab("Home")
+
+local AimingTab = menu:AddTab("Aiming")
+
+local BlantantTab = menu:AddTab("Blantant")
+
+local VisualsTab = menu:AddTab("Visuals")
+
+local MiscellaneousTab = menu:AddTab("Miscellaneous")
+
+local SettingsTab = library:CreateSettingsTab(menu)
+
+---Sections
+local MiscellaneousTab = MiscellaneousTab:AddSection("Test", 1)
+
+local MiscellaneousTab2 = MiscellaneousTab:AddSection("Test", 2)
+
+---Separators
+local Test = MiscellaneousTab:AddSection("Section", 2)
+
+MiscellaneousTab:AddSeparator({text = "Separator"})
+
+MiscellaneousTab:AddBox({text = "Box", flag = ""})
+
+---Functions
+MiscellaneousTab:AddToggle(
+   {
+       text = "Toggle",
+       flag = "",
+       callback = function(bool)
+           if bool then
+               print("Toggle")
+           else
+               print("Untoggle")
+           end
+       end
+   }
+)
+
+MiscellaneousTab:AddButton(
+   {
+       text = "Button",
+       confirm = false,
+       callback = function()
+           Print("Button")
+       end
+   }
+)
+
+MiscellaneousTab:AddBind(
+   {
+       text = "Keybind",
+       flag = "",
+       nomouse = true,
+       noindicator = true,
+       bind = Enum.KeyCode.BackSlash,
+       callback = function()
+           Print("666")
+       end
+   }
+)
+
+MiscellaneousTab:AddButton(
+   {
+       text = "Notification Sucess",
+       callback = function()
+           if res.Success then
+               library:SendNotification(library.cheatname .. " | asss", 3)
+           end
+       end
+   }
+)
+
+MiscellaneousTab:AddButton(
+   {
+       text = "Notification Error",
+       callback = function()
+           if res.Error then
+               library:SendNotification(library.cheatname .. " | ass!", 3)
+           end
+       end
+   }
+)
+
+MiscellaneousTab:AddSlider({text = " Slider", flag = '"', suffix = "%", min = 0, max = 100, increment = .1})
+
+MiscellaneousTab:AddColor(
+   {
+       text = "Color",
+       flag = "",
+       callback = function()
+       end
+   }
+)
+
+MiscellaneousTab:AddList(
+   {
+       text = "List",
+       flag = "",
+       values = themeStrings,
+       callback = function()
+       end
+   }
+)
 
 return library
